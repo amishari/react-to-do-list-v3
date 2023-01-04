@@ -1,4 +1,6 @@
 import ErrorModal from './errorModal';
+import Card from './Crad';
+import classes from './Card.module.css';
 
 import '../styles.css';
 
@@ -18,20 +20,22 @@ const AddTaskForm = ({ newTask, setNewTask, addHandler, error, setError }) => {
 					onConfirm={errorHandler}
 				/>
 			)}
-			<input
-				className={
-					newTask.length === 0
-						? ''
-						: newTask.match(letters)
-						? 'isCorrect'
-						: 'isError'
-				}
-				value={newTask}
-				onChange={(e) => setNewTask(e.target.value)}
-			/>
-			<button className="addBtn" onClick={addHandler}>
-				Add
-			</button>
+			<Card className={classes.card}>
+				<input
+					className={
+						newTask.length === 0
+							? ''
+							: newTask.match(letters)
+							? 'isCorrect'
+							: 'isError'
+					}
+					value={newTask}
+					onChange={(e) => setNewTask(e.target.value)}
+				/>
+				<button className="addBtn" onClick={addHandler}>
+					Add
+				</button>
+			</Card>
 		</div>
 	);
 };
